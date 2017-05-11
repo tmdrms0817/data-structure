@@ -1,4 +1,7 @@
-package list;
+package test;
+
+import list.ArrayList;
+import list.List;
 
 public class ArrayListTest {
 
@@ -41,6 +44,10 @@ public class ArrayListTest {
 		
 		for (int i = 0; i < count; i++) {
 			System.out.println(i+"번째 항목:"+list.get(i));
+		}
+		
+		for (int i = 0; i < args.length; i++) {
+			
 		}
 
 	}

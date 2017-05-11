@@ -1,4 +1,7 @@
-package list;
+package test;
+
+import list.LinkedList;
+import list.List;
 
 public class LinkedListTest {
 
