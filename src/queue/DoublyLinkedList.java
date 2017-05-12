@@ -1,52 +1,52 @@
-package list;
+package queue;
 
-public class DoublyLinkedList<E> implements List<E> {
+public class DoublyLinkedList<E> implements List<E>, Queue<E> {
 	private int size = 0;
 	private Node<E> head = null;
 	private Node<E> tail = null;
-	
+
 	@Override
 	public void add(E element) {
-		final Node<E> newNode = new Node<E>( element );
-		
-		if( head == null ) {
+		final Node<E> newNode = new Node<E>(element);
+
+		if (head == null) {
 			head = tail = newNode;
 		} else {
 			tail.next = newNode;
 			newNode.prev = tail;
 			tail = newNode;
 		}
-		
+
 		size++;
 	}
 
 	@Override
 	public void add(int index, E element) {
-		
-		final Node<E> newNode = new Node<E>( element );
-		
-		if( head == null ) {
+
+		final Node<E> newNode = new Node<E>(element);
+
+		if (head == null) {
 			head = tail = newNode;
 		} else {
 			tail.next = newNode;
 			newNode.prev = tail;
 			tail = newNode;
 		}
-		
+
 		size++;
 	}
 
 	@Override
 	public E get(int index) {
-		if( size <= index ) {
-			throw new IndexOutOfBoundsException( "Index:" + index + ", size:" + size );
+		if (size <= index) {
+			throw new IndexOutOfBoundsException("Index:" + index + ", size:" + size);
 		}
-		
+
 		Node<E> x = head;
-		for( int i = 0; i < index; i++ ) {
+		for (int i = 0; i < index; i++) {
 			x = x.next;
 		}
-		
+
 		return x.data;
 	}
 
@@ -58,14 +58,14 @@ public class DoublyLinkedList<E> implements List<E> {
 	@Override
 	public void removeAll() {
 		Node<E> x = head;
-		
-		while( x != null ) {
+
+		while (x != null) {
 			Node<E> next = x.next;
-			x.next =null;
+			x.next = null;
 			x.prev = null;
 			x = next;
 		}
-		
+
 		head = null;
 		tail = null;
 		size = 0;
@@ -78,23 +78,23 @@ public class DoublyLinkedList<E> implements List<E> {
 
 	@Override
 	public Object[] toArray() {
-		Object[] arr = new Object[ size ];
-		
+		Object[] arr = new Object[size];
+
 		Node<E> x = head;
 		int index = 0;
-		while( x != null ) {
-			arr[ index++ ] = x.data;
+		while (x != null) {
+			arr[index++] = x.data;
 			x = x.next;
-		}		
+		}
 		return arr;
 	}
 
-	private static class Node<E>{
+	private static class Node<E> {
 		private Node<E> next;
 		private Node<E> prev;
 		private E data;
 
-		private Node( E element ) {
+		private Node(E element) {
 			this.data = element;
 			this.next = null;
 			this.prev = null;
@@ -103,7 +103,26 @@ public class DoublyLinkedList<E> implements List<E> {
 
 	@Override
 	public Iterator<E> iterator() {
-		// TODO Auto-generated method stub
+
 		return null;
-	}	
+	}
+
+	@Override
+	public void offer(E item) {
+
+	}
+
+	@Override
+	public E poll() {
+
+		return null;
+	}
+
+	@Override
+	public E peek() {
+		if (head == null) {
+			return null;
+		}
+		return head.data;
+	}
 }

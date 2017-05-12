@@ -1,4 +1,4 @@
-package list;
+package stack;
 
 public class DoublyLinkedList<E> implements List<E> {
 	private int size = 0;
